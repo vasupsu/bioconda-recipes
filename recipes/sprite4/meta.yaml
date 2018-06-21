@@ -1,0 +1,26 @@
+package:
+  name: sprite4
+  version: "4.0"
+
+source:
+#  git_rev: v4.0
+  git_url: https://github.com/vasupsu/sprite4
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - openmp
+    - openmpi
+    - zlib
+  run:
+    - openmp
+    - openmpi
+    - zlib
+
+test:
+  commands:
+    - minimap2 2>&1 | grep 'Usage'
+
+about:
+  home: https://github.com/vasupsu/sprite4
+  license: BSD
