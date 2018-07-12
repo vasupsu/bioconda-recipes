@@ -8,18 +8,26 @@ source:
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - gcc
     - openmp
     - openmpi
+    - zlib
+  host:
+    - python >=2.7,<3
+    - htslib
     - zlib
   run:
+    - libgcc
     - openmp
     - openmpi
+    - htslib
+    - samtools
     - zlib
+    - python >=2.7,<3
 
-test:
-  commands:
-    - minimap2 2>&1 | grep 'Usage'
+#test:
+#  commands:
+#    - minimap2 2>&1 | grep 'Usage'
 
 about:
   home: https://github.com/vasupsu/sprite4
