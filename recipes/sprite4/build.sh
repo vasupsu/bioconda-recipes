@@ -2,7 +2,7 @@
 
 echo "prefix:" $PREFIX
 mkdir -p $PREFIX/bin
-builddir=$PREFIX/bin/strelka2_install
+builddir=$PREFIX/bin/sprite4_strelka2_install
 srcdir=$SRC_DIR/sprite4_strelka2_modified
 mkdir -p $builddir
 export CC=mpicc
