@@ -12,8 +12,8 @@ requirements:
     - openmp
     - openmpi
     - zlib
-  host:
     - python >=2.7,<3
+  host:
     - htslib
     - zlib
   run:
@@ -23,7 +23,7 @@ requirements:
     - htslib
     - samtools
     - zlib
-    - python >=2.7,<3
+    - python
 
 #test:
 #  commands:
