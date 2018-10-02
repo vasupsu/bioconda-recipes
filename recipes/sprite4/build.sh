@@ -9,6 +9,7 @@ export CC=mpicc
 export CXX=mpicxx
 export CXXFLAGS=-DUSE_MPI
 
+cp sprite4 $PREFIX/bin
 cd sprite4_minimap2_modified; make; cp sprite4-minimap2 genFastqIdx $PREFIX/bin; cd ..
 $CC -o $PREFIX/bin/sampa -DUSE_MPI -DUSE_OMP sampa.c -fopenmp
 $CC -o $PREFIX/bin/parsnip parsnip.c -DUSE_MPI -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate -DUSE_OMP -fopenmp
