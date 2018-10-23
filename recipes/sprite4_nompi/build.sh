@@ -12,6 +12,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	echo "Compiling sprite4 for OSX"
 	export CXXFLAGS=' -stdlib=libc++'
 fi
+export MPIFLAG=${CXXFLAGS}
 
 cp sprite4 $PREFIX/bin
 cd sprite4_minimap2_modified; make; cp sprite4-minimap2 genFastqIdx $PREFIX/bin; cd ..
