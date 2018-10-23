@@ -26,9 +26,9 @@ requirements:
     - zlib
     - python
 
-#test:
-#  commands:
-#    - minimap2 2>&1 | grep 'Usage'
+test:
+  commands:
+    - sprite4-minimap2 2>&1 | grep 'Usage'
 
 about:
   home: https://github.com/vasupsu/sprite4
