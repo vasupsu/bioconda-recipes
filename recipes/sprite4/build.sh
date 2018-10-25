@@ -37,7 +37,7 @@ $CC -o $PREFIX/bin/bamHeaderFile bamHeaderFile.c -I${PREFIX}/include/htslib -L${
 
 cd $builddir
 $srcdir/configure --jobs=4 --prefix=$builddir
-make -j1 VERBOSE=1 install
+make -j1 install
 rm -r bootstrap
 cd ..
 
