@@ -27,19 +27,27 @@ if [ "$(uname)" == "Darwin" ]; then
 	export CXXFLAGS=' -stdlib=libc++'
 fi
 
+#Copy scripts to bin folder
 cp sprite4 sprite4-test sprite4-parsnip-test sprite4-generic-test $PREFIX/bin
+
+echo "Compiling minimap2"
 cd sprite4_minimap2_modified; make; cp sprite4-minimap2 genFastqIdx $PREFIX/bin; cd ..
-echo "Compiling sampa EC ${ECFLAG} EL ${ELFLAG}"
+
+echo "Compiling sampa"
 $CC -o $PREFIX/bin/sampa ${MPIFLAG} -DUSE_OMP sampa.c ${ECFLAG} -fopenmp ${ELFLAG}
+
 echo "Compiling parsnip"
 $CC -o $PREFIX/bin/parsnip parsnip.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate ${MPIFLAG} -DUSE_OMP ${ECFLAG} -fopenmp ${ELFLAG}
-$CC -o $PREFIX/bin/bamHeaderFile bamHeaderFile.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate
-$CC -o $PREFIX/bin/mergevcf mergeVCF.c
 
+echo "Compiling Strelka2"
+$CC -o $PREFIX/bin/bamHeaderFile bamHeaderFile.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate
 cd $builddir
 $srcdir/configure --jobs=4 --prefix=$builddir
 make -j1 install
 rm -r bootstrap
 cd ..
+
+echo "Compiling mergevcf"
+$CC -o $PREFIX/bin/mergevcf mergeVCF.c
 
 ln -s $builddir/libexec/GetChromDepth $builddir/libexec/starling2 $PREFIX/bin
