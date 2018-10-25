@@ -27,7 +27,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	export CXXFLAGS=' -stdlib=libc++'
 fi
 
-cp sprite4 sprite4-test $PREFIX/bin
+cp sprite4 sprite4-test sprite4-parsnip-test sprite4-generic-test $PREFIX/bin
 cd sprite4_minimap2_modified; make; cp sprite4-minimap2 genFastqIdx $PREFIX/bin; cd ..
 echo "Compiling sampa EC ${ECFLAG} EL ${ELFLAG}"
 $CC -o $PREFIX/bin/sampa ${MPIFLAG} -DUSE_OMP sampa.c ${ECFLAG} -fopenmp ${ELFLAG}
