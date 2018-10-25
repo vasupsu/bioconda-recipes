@@ -34,6 +34,7 @@ $CC -o $PREFIX/bin/sampa ${MPIFLAG} -DUSE_OMP sampa.c ${ECFLAG} -fopenmp ${ELFLA
 echo "Compiling parsnip"
 $CC -o $PREFIX/bin/parsnip parsnip.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate ${MPIFLAG} -DUSE_OMP ${ECFLAG} -fopenmp ${ELFLAG}
 $CC -o $PREFIX/bin/bamHeaderFile bamHeaderFile.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate
+$CC -o $PREFIX/bin/mergevcf mergeVCF.c
 
 cd $builddir
 $srcdir/configure --jobs=4 --prefix=$builddir
