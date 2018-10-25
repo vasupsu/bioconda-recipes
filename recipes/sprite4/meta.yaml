@@ -8,6 +8,7 @@ source:
 
 requirements:
   build:
+    - openmpi # [linux]
     - gcc # [linux]
     - llvmdev # [osx]
     - openmp # [linux]
@@ -17,6 +18,7 @@ requirements:
     - htslib
     - python >=2.7,<3
   run:
+    - openmpi # [linux]
     - libgcc # [linux]
     - libcxx # [osx]
     - openmp # [linux]
