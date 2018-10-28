@@ -39,6 +39,9 @@ $CC -o $PREFIX/bin/sampa ${MPIFLAG} -DUSE_OMP sampa.c ${ECFLAG} -fopenmp ${ELFLA
 echo "Compiling parsnip"
 $CC -o $PREFIX/bin/parsnip parsnip.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate ${MPIFLAG} -DUSE_OMP ${ECFLAG} -fopenmp ${ELFLAG}
 
+echo "Compiling mergevcf"
+$CC -o $PREFIX/bin/mergevcf mergeVCF.c
+
 echo "Compiling Strelka2"
 $CC -o $PREFIX/bin/bamHeaderFile bamHeaderFile.c -I${PREFIX}/include/htslib -L${PREFIX}/lib -lhts -lz  -lbz2 -llzma -lpthread -ldeflate
 cd $builddir
@@ -46,8 +49,5 @@ $srcdir/configure --jobs=4 --prefix=$builddir
 make -j1 install
 rm -r bootstrap
 cd ..
-
-echo "Compiling mergevcf"
-$CC -o $PREFIX/bin/mergevcf mergeVCF.c
 
 ln -s $builddir/libexec/GetChromDepth $builddir/libexec/starling2 $PREFIX/bin
